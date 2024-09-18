@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Login</h2>
+
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <form method="post">
+    {% csrf_token %}
+    <label for="username">Username</label>
+    <input type="text" name="username" required>
+    <label for="password">Password</label>
+    <input type="password" name="password" required>
+    <button type="submit">Login</button>
+  </form>
+
+  <p>Don't have an account? <a href="{% url 'register' %}">Register here</a></p>
+{% endblock %}
